@@ -1,17 +1,12 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
 import './App.scss'
 
-const App = ({ children }) => (
+const Header = () => (
   <div className="App">
     <div className="App-header">
       <h1>Notify App</h1>
     </div>
-    <p>{ children }</p>
   </div>
 )
 
-App.propTypes = {
-  children: PropTypes.string.isRequired,
-}
-
-export default App
+export default Header
