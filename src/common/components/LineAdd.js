@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import InputText from './InputText'
 import TextArea from './TextArea'
+import './App.scss'
 
 const FormAdd = ({ handleSubmit, handleChange, name, description, token }) => (
   <form className="form-horizontal col-md-9 col-md-offset-1 col-xs-12" onSubmit={handleSubmit}>
@@ -24,7 +25,7 @@ const FormAdd = ({ handleSubmit, handleChange, name, description, token }) => (
       </div>
     </div>
     <div className="form-group">
-      <div className="col-sm-offset-2 col-sm-10">
+      <div className="col-md-offset-3 col-md-9 col-xs-12">
         <button type="submit" className="btn btn-success">Submit</button>
         <Link to="/list" className="btn btn-default btn-list">Back</Link>
       </div>
