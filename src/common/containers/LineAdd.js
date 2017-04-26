@@ -30,65 +30,6 @@ export class DailyReport extends Component {
     this.props.onConnectFirebase()
   }
 
-  handleReport = (team) => {
-    let reportList
-    let reportCounter
-    const chooseDate = DateLib.getCurDate()
-    let msg = `\nReport : https://daily-sync-app.firebaseapp.com/report/${team}\n\n${chooseDate} #${team}\n\n`
-    this.props.database.getList(chooseDate, this.props.team)
-    .then((result) => {
-      const arr = []
-      const r = result.val()
-      for (const i in r) {
-        arr.push({ id: i, ...r[i] })
-      }
-      reportList = arr
-      reportCounter = 0
-
-      reportList.map(doc => {
-        reportCounter = reportCounter + 1
-        msg = msg.concat(doc.name)
-              .concat('\nเมื่อวานทำอะไร\n')
-              .concat(doc.yesterday)
-              .concat('\n\nวันนี้ทำอะไร\n')
-              .concat(doc.today)
-              .concat('\n\n')
-
-        if(reportCounter === 3) {
-          LineApi.lineNotify(msg)
-          .then((lineResult) => {
-            console.log(lineResult)
-          })
-          reportCounter = 0
-          msg = ''
-        }
-      })
-      if (reportCounter !== 0) {
-        LineApi.lineNotify(msg)
-        .then((lineResult) => {
-          console.log(lineResult)
-        })
-      }
-      alert('ส่งข้อมูลเรียบร้อย')
-    })
-  }
-
-  getList = (database) => {
-    const chooseDate = DateLib.getCurDate()
-    database.getList(chooseDate, this.props.team)
-    .then((result) => {
-      const arr = []
-      const r = result.val()
-      for (const i in r) {
-        arr.push({ id: i, ...r[i] })
-      }
-      this.setState({
-        dailyList: arr,
-        chooseDate,
-      })
-    })
-  }
-
   render() {
     const { team } = this.props
     return (
