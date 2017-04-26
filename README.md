@@ -1,4 +1,4 @@
-# Daily sync with firebase (ReactJS)
+# Sample Social Notify with firebase (ReactJS)
 
 ## install packages
 `npm install`

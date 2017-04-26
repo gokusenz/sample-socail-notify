@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom'
 import InputText from './InputText'
 import TextArea from './TextArea'
 
-const FormAdd = ({ handleSubmit, handleChange, name, description, token }) => (
+const LineAdd = ({ handleSubmit, handleChange, name, description, token }) => (
   <form className="form-horizontal col-md-9 col-md-offset-1 col-xs-12" onSubmit={handleSubmit}>
+    <InputText name="provider" type="hidden" defaultValue="line" />
     <div className="form-group">
       <label htmlFor="name" className="col-md-3 col-sm-2 control-label">Name</label>
       <div className="col-md-8 col-sm-10" >
@@ -32,4 +33,4 @@ const FormAdd = ({ handleSubmit, handleChange, name, description, token }) => (
   </form>
 )
 
-export default FormAdd
+export default LineAdd

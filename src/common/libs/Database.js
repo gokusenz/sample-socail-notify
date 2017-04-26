@@ -12,6 +12,7 @@ class Database {
       storageBucket: database.storageBucket,
       messagingSenderId: database.messagingSenderId,
     }
+    console.log(config)
     const randomString = new Date().getTime()
     const otherApp = firebase.initializeApp(config, instancesName + randomString)
 
@@ -29,6 +30,7 @@ class Database {
       })
       return true
     } catch (error) {
+      console.log(error)
       return false
     }
   }

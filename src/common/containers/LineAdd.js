@@ -1,58 +1,63 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { connectFirebase } from '../actions/Firebase'
-import DailyReportComponent from '../components/DailyReport'
+import { onChange } from '../actions/Field'
+import LineAddComponent from '../components/LineAdd'
 import Database from '../libs/Database'
-import DateLib from '../libs/Date'
-import LineApi from '../libs/LineApi'
 
-export class DailyReport extends Component {
+export class LineAdd extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      dailyList: [],
-      chooseDate: '',
     }
   }
 
   componentDidMount() {
-    this.connectDatabase()
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.database !== this.props.database) {
-      // console.log('ReRender', this.props)
-      this.getList(nextProps.database)
-    }
   }
 
   connectDatabase = () => {
     this.props.onConnectFirebase()
   }
 
+  handleSubmit = (e) => {
+    e.preventDefault()
+    const result = this.props.database.saveGroup(
+      e.target.name.value,
+      e.target.token.value,
+      e.target.description.value,
+      e.target.provider.value,
+    )
+    if (result) {
+      alert('บันทึกข้อมูลเรียบร้อย')
+    } else {
+      alert('บันทึกข้อมูลไม่สำเร็จ กรุณาลองใหม่อีกครั้ง')
+    }
+  }
+
+  handleChange = (event, fieldName) => {
+    this.props.onChangeField(fieldName, event.target.value)
+  }
+
   render() {
-    const { team } = this.props
     return (
-      <DailyReportComponent
-        date={this.state.chooseDate}
-        team={team}
-        dailyList={this.state.dailyList}
-        handleReport={this.handleReport}
+      <LineAddComponent 
+        handleSubmit={this.handleSubmit} 
+        handleChange={this.handleChange} 
       />
     )
   }
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const { firebase } = state
+  const { firebase, field } = state
   const returnState = {}
-  returnState.database = firebase
+  returnState[field[0]] = field[1]
+  returnState['database'] = firebase
   return returnState
 }
 
 export default connect(
   mapStateToProps,
   {
-    onConnectFirebase: connectFirebase,
+    onChangeField: onChange,
   }
-)(DailyReport)
+)(LineAdd)
