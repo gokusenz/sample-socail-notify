@@ -8,6 +8,7 @@ class Database {
       apiKey: database.apiKey,
       authDomain: database.authDomain,
       databaseURL: database.databaseURL,
+      projectId: database.projectId,
       storageBucket: database.storageBucket,
       messagingSenderId: database.messagingSenderId,
     }
