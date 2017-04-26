@@ -19,23 +19,14 @@ class Database {
     this.db = otherApp.database()
   }
 
-  saveData(name, yesterday, today, date, team) {
+  saveGroup(name, desciption, token, provider) {
     try {
-      this.db.ref(`${date}/${team}/${name}`).set({
+      this.db.ref(`${provider}/${token}`).set({
         name,
-        team,
-        yesterday,
-        today,
-        date,
+        desciption,
+        token,
+        provider,
       })
-      this.db.ref(`YESTERDAY/${team}/${name}`).set({
-        name,
-        team,
-        yesterday,
-        today,
-        date,
-      })
-      
       return true
     } catch (error) {
       return false
@@ -46,9 +37,6 @@ class Database {
     return this.db.ref(`/${date}/${team}`).once('value')
   }
 
-  getYesterday(team, name) {
-    return this.db.ref(`YESTERDAY/${team}/${name}`).once('value')
-  }
 }
 
 export default Database
