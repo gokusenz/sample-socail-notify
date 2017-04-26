@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import InputText from './InputText'
 import TextArea from './TextArea'
-import './App.scss'
 
 const FormAdd = ({ handleSubmit, handleChange, name, description, token }) => (
   <form className="form-horizontal col-md-9 col-md-offset-1 col-xs-12" onSubmit={handleSubmit}>

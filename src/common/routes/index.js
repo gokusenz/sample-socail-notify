@@ -3,12 +3,14 @@ import { Route } from 'react-router-dom'
 import PageNotFound from '../components/PageNotFound'
 import Header from '../components/Header'
 import LineAdd from '../components/LineAdd'
+import LineMsg from '../components/LineMsg'
 
 const Routes = () => (
   <div>
     <Route component={Header} />
     <Route exact path="/list" component={PageNotFound} />
     <Route exact path="/add" component={LineAdd} />
+    <Route exact path="/message" component={LineMsg} />
   </div>
 )
 
