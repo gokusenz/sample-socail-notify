@@ -14,11 +14,22 @@ export class LineList extends Component {
   }
 
   componentDidMount() {
-    this.getList
+    this.connectDatabase()
+  }
+
+  connectDatabase = () => {
+    this.props.onConnectFirebase()
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.database !== this.props.database) {
+      this.database = nextProps.database
+      this.getList()
+    }
   }
 
   getList = () => {
-    database.getList(this.state.provider)
+    this.database.getList(this.state.provider)
     .then((result) => {
       const arr = []
       const r = result.val()
@@ -39,7 +50,7 @@ export class LineList extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const { firebase, field } = state
+  const { firebase } = state
   let returnState = {}
   returnState['database'] = firebase
   return returnState

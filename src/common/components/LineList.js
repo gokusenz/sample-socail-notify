@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const LineList = () => (
+const LineList = ({ provider, list }) => (
   <div className="main-grid">
     <div className="col-xs-8 col-md-10">
       <h3 className="title-menu">Line List</h3>
@@ -22,16 +22,21 @@ const LineList = () => (
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>name</td>
-            <td>token</td>
-            <td>description</td>
-            <td>
-              <Link to="#">
-                Edit
-              </Link>
-            </td>
-          </tr>
+          {
+            list.map(item => (
+              <tr key={item.id}>
+                <td>{ item.name }</td>
+                <td>{ item.token }</td>
+                <td>{ item.description }</td>
+                <td>
+                  <Link to="#">
+                    Edit
+                  </Link>
+                </td>
+              </tr>
+            ))
+          }
+          
         </tbody>
       </table>
     </div>

@@ -12,14 +12,6 @@ export class Header extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.name !== this.props.name | nextProps.yesterday !== this.props.yesterday) {
-      this.setState({
-        yesterday: nextProps.yesterday
-      });
-    }
-  }
-
   componentDidMount() {
     this.connectDatabase()
   }

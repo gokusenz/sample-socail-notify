@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import TextArea from './TextArea'
 
-const FormAdd = ({ handleSubmit, handleChange, group, message }) => (
+const LineMsg = ({ handleSubmit, handleChange, group, message }) => (
   <form className="form-horizontal col-md-9 col-md-offset-1 col-xs-12" onSubmit={handleSubmit}>
     <div className="form-group">
       <label htmlFor="group" className="col-md-3 col-sm-2 control-label">Group</label>
@@ -27,4 +27,4 @@ const FormAdd = ({ handleSubmit, handleChange, group, message }) => (
   </form>
 )
 
-export default FormAdd
+export default LineMsg

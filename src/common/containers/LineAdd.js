@@ -14,10 +14,6 @@ export class LineAdd extends Component {
   componentDidMount() {
   }
 
-  connectDatabase = () => {
-    this.props.onConnectFirebase()
-  }
-
   handleSubmit = (e) => {
     e.preventDefault()
     const result = this.props.database.saveGroup(

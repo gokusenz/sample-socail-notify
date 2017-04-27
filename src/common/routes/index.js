@@ -4,7 +4,7 @@ import PageNotFound from '../components/PageNotFound'
 import Header from '../containers/Header'
 import LineAdd from '../containers/LineAdd'
 import LineMsg from '../components/LineMsg'
-import LineList from '../components/LineList'
+import LineList from '../containers/LineList'
 
 const Routes = () => (
   <div>
