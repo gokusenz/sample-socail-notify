@@ -19,12 +19,12 @@ class Database {
     this.db = otherApp.database()
   }
 
-  saveGroup(name, description, token, provider) {
+  saveGroup(name, token, description, provider) {
     try {
       this.db.ref(`${provider}/${token}`).set({
         name,
-        description,
         token,
+        description,
         provider,
       })
       return true

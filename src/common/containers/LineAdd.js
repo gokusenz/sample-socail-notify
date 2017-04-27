@@ -25,6 +25,7 @@ export class LineAdd extends Component {
     )
     if (result) {
       alert('บันทึกข้อมูลเรียบร้อย')
+      window.location.href = "/list"
     } else {
       alert('บันทึกข้อมูลไม่สำเร็จ กรุณาลองใหม่อีกครั้ง')
     }
