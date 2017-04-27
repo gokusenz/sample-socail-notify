@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom'
 import PageNotFound from '../components/PageNotFound'
 import Header from '../containers/Header'
 import LineAdd from '../containers/LineAdd'
-import LineMsg from '../components/LineMsg'
+import LineMsg from '../containers/LineMsg'
 import LineList from '../containers/LineList'
 
 const Routes = () => (

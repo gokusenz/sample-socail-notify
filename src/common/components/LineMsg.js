@@ -1,14 +1,21 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import TextArea from './TextArea'
+import InputText from './InputText'
 
-const LineMsg = ({ handleSubmit, handleChange, group, message }) => (
+const LineMsg = ({ handleSubmit, handleChange, list, group, message }) => (
   <form className="form-horizontal col-md-9 col-md-offset-1 col-xs-12" onSubmit={handleSubmit}>
+    <InputText name="provider" type="hidden" defaultValue="line" />
     <div className="form-group">
       <label htmlFor="group" className="col-md-3 col-sm-2 control-label">Group</label>
       <div className="col-md-8 col-sm-10">
         <select className="form-control" name="group" id="group">
-          <option value="test" selected>test</option>
+          <option value="">กรุณาเลือก</option>
+          {
+            list.map(item => (
+              <option key={item.id} value={item.token}>{item.name}</option>
+            ))
+          }
         </select>
       </div>
     </div>
