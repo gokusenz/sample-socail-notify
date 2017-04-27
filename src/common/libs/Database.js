@@ -1,5 +1,7 @@
+import database from './ConfigDB'
+
 class Database {
-  constructor(database) {
+  constructor() {
     this.db = database
   }
 

@@ -3,12 +3,11 @@ import { connect } from 'react-redux'
 import { onChange } from '../actions/Field'
 import LineAddComponent from '../components/LineAdd'
 import Database from '../libs/Database'
-import ConfigDB from '../libs/ConfigDB'
 
 export class LineAdd extends Component {
   constructor(props) {
     super(props)
-    this.database = new Database(ConfigDB)
+    this.database = new Database()
   }
 
   componentDidMount() {

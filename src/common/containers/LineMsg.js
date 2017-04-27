@@ -4,7 +4,6 @@ import { onChange } from '../actions/Field'
 import { connectFirebase } from '../actions/Firebase'
 import LineMsgComponent from '../components/LineMsg'
 import Database from '../libs/Database'
-import ConfigDB from '../libs/ConfigDB'
 import LineApi from '../libs/LineApi'
 
 export class LineMsg extends Component {
@@ -14,7 +13,7 @@ export class LineMsg extends Component {
       provider: 'line',
       list: [],
     }
-    this.database = new Database(ConfigDB)
+    this.database = new Database()
   }
 
   componentDidMount() {

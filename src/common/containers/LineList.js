@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { connectFirebase } from '../actions/Firebase'
 import LineListComponent from '../components/LineList';
 import Database from '../libs/Database'
-import ConfigDB from '../libs/ConfigDB'
 
 export class LineList extends Component {
 
@@ -13,7 +12,7 @@ export class LineList extends Component {
       provider: 'line',
       list: [],
     }
-    this.database = new Database(ConfigDB)
+    this.database = new Database()
   }
 
   componentDidMount() {
