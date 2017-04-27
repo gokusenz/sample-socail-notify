@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { connectFirebase } from '../actions/Firebase'
 import LineListComponent from '../components/LineList';
+import Database from '../libs/Database'
+import ConfigDB from '../libs/ConfigDB'
 
 export class LineList extends Component {
 
@@ -11,21 +13,11 @@ export class LineList extends Component {
       provider: 'line',
       list: [],
     }
+    this.database = new Database(ConfigDB)
   }
 
   componentDidMount() {
-    this.connectDatabase()
-  }
-
-  connectDatabase = () => {
-    this.props.onConnectFirebase()
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.database !== this.props.database) {
-      this.database = nextProps.database
-      this.getList()
-    }
+    this.getList()
   }
 
   getList = () => {
@@ -50,16 +42,12 @@ export class LineList extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const { firebase } = state
-  let returnState = {}
-  returnState['database'] = firebase
-  return returnState
+  return state
 }
 
 
 export default connect(
   mapStateToProps,
   { 
-    onConnectFirebase: connectFirebase,
   }
 )(LineList)

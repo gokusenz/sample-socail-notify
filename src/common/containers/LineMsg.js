@@ -4,6 +4,7 @@ import { onChange } from '../actions/Field'
 import { connectFirebase } from '../actions/Firebase'
 import LineMsgComponent from '../components/LineMsg'
 import Database from '../libs/Database'
+import ConfigDB from '../libs/ConfigDB'
 import LineApi from '../libs/LineApi'
 
 export class LineMsg extends Component {
@@ -13,21 +14,11 @@ export class LineMsg extends Component {
       provider: 'line',
       list: [],
     }
+    this.database = new Database(ConfigDB)
   }
 
   componentDidMount() {
-    this.connectDatabase()
-  }
-
-  connectDatabase = () => {
-    this.props.onConnectFirebase()
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.database !== this.props.database) {
-      this.database = nextProps.database
-      this.getList()
-    }
+    this.getList()
   }
 
   handleSubmit = (e) => {
@@ -74,10 +65,9 @@ export class LineMsg extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const { firebase, field } = state
+  const { field } = state
   const returnState = {}
   returnState[field[0]] = field[1]
-  returnState['database'] = firebase
   return returnState
 }
 
@@ -85,6 +75,5 @@ export default connect(
   mapStateToProps,
   {
     onChangeField: onChange,
-    onConnectFirebase: connectFirebase,
   }
 )(LineMsg)

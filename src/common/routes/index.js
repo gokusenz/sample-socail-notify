@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 import PageNotFound from '../components/PageNotFound'
-import Header from '../containers/Header'
+import Header from '../components/Header'
 import LineAdd from '../containers/LineAdd'
 import LineMsg from '../containers/LineMsg'
 import LineList from '../containers/LineList'

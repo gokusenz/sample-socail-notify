@@ -3,10 +3,12 @@ import { connect } from 'react-redux'
 import { onChange } from '../actions/Field'
 import LineAddComponent from '../components/LineAdd'
 import Database from '../libs/Database'
+import ConfigDB from '../libs/ConfigDB'
 
 export class LineAdd extends Component {
   constructor(props) {
     super(props)
+    this.database = new Database(ConfigDB)
   }
 
   componentDidMount() {
@@ -17,7 +19,7 @@ export class LineAdd extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    const result = this.props.database.saveGroup(
+    const result = this.database.saveGroup(
       e.target.name.value,
       e.target.token.value,
       e.target.description.value,
@@ -46,10 +48,9 @@ export class LineAdd extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const { firebase, field } = state
+  const { field } = state
   const returnState = {}
   returnState[field[0]] = field[1]
-  returnState['database'] = firebase
   return returnState
 }
 
