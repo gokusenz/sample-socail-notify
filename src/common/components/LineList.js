@@ -10,6 +10,9 @@ const LineList = ({ provider, list }) => (
       <Link to="/add" className="btn btn-success">
         เพิ่มข้อมูล
       </Link>
+      <Link to="/message" className="btn btn-warning btn-list">
+        ส่งข้อความ
+      </Link>
     </div>
     <div className="table-responsive col-xs-12">
       <table className="table">
@@ -36,7 +39,6 @@ const LineList = ({ provider, list }) => (
               </tr>
             ))
           }
-          
         </tbody>
       </table>
     </div>

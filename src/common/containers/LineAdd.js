@@ -7,11 +7,12 @@ import Database from '../libs/Database'
 export class LineAdd extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-    }
   }
 
   componentDidMount() {
+    if(this.props.match.params.id !== undefined) {
+      console.log(this.props.match.params.id)
+    }
   }
 
   handleSubmit = (e) => {

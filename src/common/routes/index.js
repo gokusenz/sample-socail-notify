@@ -10,6 +10,7 @@ const Routes = () => (
   <div>
     <Route component={Header} />
     <Route exact path="/list" component={LineList} />
+    <Route exact path="/edit/:id" component={LineAdd} />
     <Route exact path="/add" component={LineAdd} />
     <Route exact path="/message" component={LineMsg} />
   </div>
