@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { onChange } from '../actions/Field'
-import { connectFirebase } from '../actions/Firebase'
 import LineMsgComponent from '../components/LineMsg'
 import Database from '../libs/Database'
 import LineApi from '../libs/LineApi'

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { connectFirebase } from '../actions/Firebase'
 import LineListComponent from '../components/LineList';
 import Database from '../libs/Database'
 
