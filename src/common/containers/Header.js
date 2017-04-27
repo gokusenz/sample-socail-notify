@@ -25,7 +25,6 @@ export class Header extends Component {
   }
 
   connectDatabase = () => {
-    console.log('db')
     this.props.onConnectFirebase()
   }
 

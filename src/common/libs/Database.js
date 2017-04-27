@@ -12,7 +12,6 @@ class Database {
       storageBucket: database.storageBucket,
       messagingSenderId: database.messagingSenderId,
     }
-    console.log(config)
     const randomString = new Date().getTime()
     const otherApp = firebase.initializeApp(config, instancesName + randomString)
 
@@ -35,8 +34,8 @@ class Database {
     }
   }
 
-  getList(date, team) {
-    return this.db.ref(`/${date}/${team}`).once('value')
+  getList(provider) {
+    return this.db.ref(`/${provider}`).once('value')
   }
 
 }
