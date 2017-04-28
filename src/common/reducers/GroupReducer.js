@@ -24,6 +24,17 @@ const GroupReducer = (state = initialState, action) => {
         group: action.group,
       })
     }
+    case ActionTypes.ResetGroup: {
+      return Object.assign({}, state, {
+        inProgress: false,
+        success: '',
+        group: {
+          name: '',
+          token: '',
+          description: '',
+        },
+      })
+    }
     default:
       return state
   }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getGroup } from '../actions/GetGroup'
+import { resetGroup } from '../actions/ResetGroup'
 import LineAddComponent from '../components/LineAdd'
 import Database from '../libs/Database'
 
@@ -44,9 +45,7 @@ export class LineAdd extends Component {
     )
     if (result) {
       alert('บันทึกข้อมูลเรียบร้อย')
-      e.target.name.value = ''
-      e.target.token.value = ''
-      e.target.description.value = ''
+      this.props.resetGroup()
       // window.location.href = "/list"
     } else {
       alert('บันทึกข้อมูลไม่สำเร็จ กรุณาลองใหม่อีกครั้ง')
@@ -83,5 +82,6 @@ export default connect(
   mapStateToProps,
   {
     getGroup: getGroup,
+    resetGroup: resetGroup,
   }
 )(LineAdd)
