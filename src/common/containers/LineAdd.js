@@ -8,13 +8,32 @@ import Database from '../libs/Database'
 export class LineAdd extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      name: '',
+      description: '',
+      token: '',
+    }
     this.database = new Database()
   }
 
   componentDidMount() {
     if(this.props.match.params.id !== undefined) {
-      console.log(this.props.match.params.id)
       this.props.getGroup('line', this.props.match.params.id)
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(this.props.data !== nextProps.data) {
+      console.log(nextProps.data.group)
+      const group = nextProps.data.group
+      if(group !== undefined) {
+        console.log('name ', group.name)
+        this.setState({
+          name: group.name,
+          token: group.token,
+          description: group.description,
+        })
+      }
     }
   }
 
@@ -38,7 +57,10 @@ export class LineAdd extends Component {
   }
 
   handleChange = (event, fieldName) => {
-    this.props.onChangeField(fieldName, event.target.value)
+    let state = {}
+    state[fieldName] = event.target.value
+    this.setState(state)
+    // this.props.onChangeField(fieldName, event.target.value)
   }
 
   render() {
@@ -46,16 +68,19 @@ export class LineAdd extends Component {
       <LineAddComponent 
         handleSubmit={this.handleSubmit} 
         handleChange={this.handleChange} 
+        name={this.state.name} 
+        description={this.state.description}
+        token={this.state.token}
       />
     )
   }
 }
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(state)
-  const { field } = state
+  const { field, group } = state
   const returnState = {}
   returnState[field[0]] = field[1]
+  returnState['data'] = group
   return returnState
 }
 

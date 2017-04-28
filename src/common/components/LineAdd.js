@@ -9,13 +9,13 @@ const LineAdd = ({ handleSubmit, handleChange, name, description, token }) => (
     <div className="form-group">
       <label htmlFor="name" className="col-md-3 col-sm-2 control-label">Name</label>
       <div className="col-md-8 col-sm-10" >
-        <InputText name="name" type="text" handleChange={handleChange} />
+        <InputText name="name" type="text" handleChange={handleChange} value={name} />
       </div>
     </div>
     <div className="form-group">
       <label htmlFor="token" className="col-md-3 col-sm-2 control-label">Token <a href="https://kittipongint.com/line-notify-simple-without-coding/" rel="noopener noreferrer" target="_blank">(Find Token?)</a></label>
       <div className="col-md-8 col-sm-10" >
-        <InputText name="token" type="text" handleChange={handleChange} />
+        <InputText name="token" type="text" handleChange={handleChange} value={token} />
       </div>
     </div>
     <div className="form-group">

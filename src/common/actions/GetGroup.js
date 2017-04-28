@@ -26,7 +26,6 @@ export function getGroup(provider, token) {
     return new Database().getGroup(provider, token)
     .then((result) => {
       const group = result.val()
-      console.log(group)
       dispatch(getGroupFulfilledAction(group))
     })
     .catch((error) => {
