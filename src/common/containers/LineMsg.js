@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { onChange } from '../actions/Field'
 import LineMsgComponent from '../components/LineMsg'
 import Database from '../libs/Database'
 import LineApi from '../libs/LineApi'
@@ -27,7 +26,9 @@ export class LineMsg extends Component {
   }
 
   handleChange = (event, fieldName) => {
-    this.props.onChangeField(fieldName, event.target.value)
+    let state = {}
+    state[fieldName] = event.target.value
+    this.setState(state)
   }
 
   sendMesage(group, message) {
@@ -63,15 +64,11 @@ export class LineMsg extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const { field } = state
-  const returnState = {}
-  returnState[field[0]] = field[1]
-  return returnState
+  return state
 }
 
 export default connect(
   mapStateToProps,
   {
-    onChangeField: onChange,
   }
 )(LineMsg)
