@@ -32,7 +32,7 @@ const LineList = ({ provider, list }) => (
                 <td>{ item.token }</td>
                 <td>{ item.description }</td>
                 <td>
-                  <Link to="#">
+                  <Link to={`/edit/${item.token}`}>
                     Edit
                   </Link>
                 </td>

@@ -23,7 +23,6 @@ export class LineAdd extends Component {
 
   componentWillReceiveProps(nextProps) {
     if(this.props.data !== nextProps.data) {
-      console.log(nextProps.data.group)
       const group = nextProps.data.group
       if(group !== undefined) {
         this.setState({
