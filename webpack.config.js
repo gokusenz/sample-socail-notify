@@ -5,7 +5,6 @@ const webpack = require('webpack')
 const task = process.env.NODE_ENV || 'development'
 const nodePort = process.env.NODE_PORT || '3000'
 const lineUrl = process.env.LINE_URL || ''
-const lineToken = process.env.LINE_TOKEN || ''
 const database = {
   apiKey: process.env.apiKey,
   authDomain: process.env.authDomain,
@@ -92,7 +91,6 @@ module.exports = {
         NODE_ENV: JSON.stringify(task),
         DATABASE: JSON.stringify(database),
         LINE_URL: JSON.stringify(lineUrl),
-        LINE_TOKEN: JSON.stringify(lineToken),
       },
     }),
   ],
