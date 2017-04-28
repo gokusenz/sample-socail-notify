@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { onChange } from '../actions/Field'
 import { getGroup } from '../actions/GetGroup'
 import LineAddComponent from '../components/LineAdd'
 import Database from '../libs/Database'
@@ -27,7 +26,6 @@ export class LineAdd extends Component {
       console.log(nextProps.data.group)
       const group = nextProps.data.group
       if(group !== undefined) {
-        console.log('name ', group.name)
         this.setState({
           name: group.name,
           token: group.token,
@@ -60,7 +58,6 @@ export class LineAdd extends Component {
     let state = {}
     state[fieldName] = event.target.value
     this.setState(state)
-    // this.props.onChangeField(fieldName, event.target.value)
   }
 
   render() {
@@ -77,9 +74,8 @@ export class LineAdd extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const { field, group } = state
+  const { group } = state
   const returnState = {}
-  returnState[field[0]] = field[1]
   returnState['data'] = group
   return returnState
 }
@@ -87,7 +83,6 @@ const mapStateToProps = (state, ownProps) => {
 export default connect(
   mapStateToProps,
   {
-    onChangeField: onChange,
     getGroup: getGroup,
   }
 )(LineAdd)
