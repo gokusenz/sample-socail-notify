@@ -1,2 +1,1 @@
-export const CONNECT_FIREBASE = 'CONNECT_FIREBASE'
 export const ON_CHANGE = 'ON_CHANGE'

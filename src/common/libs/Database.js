@@ -24,6 +24,10 @@ class Database {
     return this.db.ref(`/${provider}`).once('value')
   }
 
+  getGroup(provider, token) {
+    return this.db.ref(`/${provider}/${token}`).once('value')
+  }
+
 }
 
 export default Database
